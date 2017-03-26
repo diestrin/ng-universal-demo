@@ -1,18 +1,17 @@
 import 'zone.js/dist/zone-node';
-import { platformServer, renderModuleFactory } from '@angular/platform-server'
+import 'reflect-metadata';
 import { enableProdMode } from '@angular/core'
 import { AppServerModule } from './app.server'
-import { AppServerModuleNgFactory } from './ngfactory/src/app.server.ngfactory'
 import * as express from 'express';
 import {ngExpressEngine} from './express-engine'
 
-enableProdMode();
+// enableProdMode();
 
 const app = express();
 
 app.engine('html', ngExpressEngine({
 	baseUrl: 'http://localhost:4200',
-	bootstrap: [AppServerModuleNgFactory]
+	bootstrap: [AppServerModule]
 }));
 
 app.set('view engine', 'html');

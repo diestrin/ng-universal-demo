@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-import {renderModuleFactory} from '@angular/platform-server';
+import {renderModule} from '@angular/platform-server';
 
 const templateCache  = {};
 
@@ -13,7 +13,7 @@ export function ngExpressEngine(setupOptions){
 			let file = fs.readFileSync(filePath);
 			templateCache[filePath] = file.toString();
 		}
-		renderModuleFactory(setupOptions.bootstrap[0], {
+		renderModule(setupOptions.bootstrap[0], {
 			document: templateCache[filePath],
 			url: options.req.url
 		})

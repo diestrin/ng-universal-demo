@@ -1,6 +1,5 @@
-const ngtools = require('@ngtools/webpack');
-
 module.exports = {
+  devtool: 'source-map',
 	entry: {
 		main: './src/main.server.ts'
 	},
@@ -12,17 +11,12 @@ module.exports = {
 		path: 'dist',
 		filename: '[name].js'
 	},
-	plugins: [
-		new ngtools.AotPlugin({
-			tsConfigPath: './tsconfig.json',
-		})
-	],
 	module: {
 		rules: [
 			{
-              test: /\.ts$/,
-              loader: '@ngtools/webpack',
-            }
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader',
+      }
 		]
 	}
 }
